@@ -1,13 +1,11 @@
 #include<stdio.h>
 int main(){
-	int i,j,t,n,k;
-	char s[30],temp;
-	printf("Enter T: ");
+	int i,j,t,n;
+	char temp,s[9];
 	scanf("%d",&t);
-	for(k=0;k<t;k++){
-		printf("Test case %d:\n",k+1);
-		printf("Enter n, String: ");
-		scanf("%d %s",&n,s);
+	while(t--){
+		scanf("%d",&n);
+		scanf("%s",s);
 		for(i=0;i<n;i+=2){
 			temp=s[i];
 			s[i]=s[i+1];
