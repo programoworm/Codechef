@@ -1,8 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
+int min(int,int,int);
 int main(){
-	int ind[64],m,mi;
+	int ind[64],m,mi,mii,miii;
 	long int t;
 	long long int n;
 	scanf("%ld",&t);
@@ -14,8 +15,6 @@ int main(){
 			printf("%d\n",abs(m-n));
 		}
 		else{
-			if(n<0)
-				n=abs(n);
 			x=n;
 			while(x){
 				c++;
@@ -23,17 +22,27 @@ int main(){
 					ind[s++]=c-1;
 				x=x/2;
 			}
-			if(s>=2){
+			if(s<2)
+				printf("1\n");
+			else{
 				m=pow(2,ind[s-1])+pow(2,ind[s-2]);
 				mi=pow(2,ind[s-1]+1)+1;
+				if(ind[s-1]!=(ind[s-2]+1)){
+					mii=pow(2,ind[s-1])+pow(2,ind[s-2]+1);
+				}
+				else
+					mii=0;
+				printf("%d\n",min(abs(mii-n),abs(mi-n),abs(m-n)));
 			}
-			else
-				m=pow(2,ind[s-1])+1;
-			if(abs(m-n)>abs(mi-n))
-				printf("%d\n",abs(mi-n));
-			else
-				printf("%d\n",abs(m-n));
 		}
 	}
 	return 0;
+}
+int min(int x,int y,int z){
+	int m=x;
+	if(m>y)
+		m=y;
+	if(m>z)
+		m=z;
+	return m;
 }
